@@ -6,6 +6,11 @@ exports.signup = function(req, res, next){
 	var email = req.body.email;
 	var password = req.body.password;
 
+
+	if(!email || !password){
+		return res.status(418).send({error: 'You must provide email and pw.'});
+	}
+
 	//2
 	User.findOne({email: email}, function(err, existingUser){
 		if(err){
@@ -17,7 +22,7 @@ exports.signup = function(req, res, next){
 			return res.status(418).send("email is in use");
 		}
 
-		//3
+		//3 - If user does not exist when sigining up
 		var user = new User({
 			email: email,
 			password: password
