@@ -1,4 +1,4 @@
-import { comibineReducers } from 'redux';
+import { combineReducers } from 'redux';
 const rootReducers = combineReducers({
 	state: (state = {}) => state
 });
